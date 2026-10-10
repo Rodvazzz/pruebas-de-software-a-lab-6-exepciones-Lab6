@@ -4,22 +4,44 @@ class MyException(Exception):
 class ExceptionsDemo:
     
     def divide(self, a, b):
-        result = a / b
-        print("Division result:", result)
+        try:
+            result = a / b
+            print("Division result:", result)
+        except ZeroDivisionError:
+            print("ZeroDivisionError detected")
+        except TypeError:
+            print("TypeError detected")
+
     
     def access_list(self, lst, index):
-        print("Element:", lst[index])
+        try:
+            print("Element:", lst[index])
+        except IndexError:
+            print("IndexError detected")
+        except TypeError:
+            print("TypeError detected")
     
     def access_dict(self, dic, key):
-        print("Value:", dic[key])
-    
+        try:
+            print("Value:", dic[key])
+        except KeyError:
+            print("KeyError detected")
+        except TypeError:
+            print("TypeError detected")    
+
     def read_file(self, filename):
-        with open(filename, "r") as f:
-            content = f.read()
-            print(content)
-    
+        try:
+            with open(filename, "r") as f:
+                content = f.read()
+                print(content)
+        except FileNotFoundError:
+            print("FileNotFoundError detected")
+
     def access_attribute(self, obj):
-        print(obj.tnonexistent_attribue)
+        try:
+            print(obj.tnonexistent_attribue)
+        except AttributeError:
+            print("AttributeError detected")
     
     def check_positive(self, number):
         if number < 0:
